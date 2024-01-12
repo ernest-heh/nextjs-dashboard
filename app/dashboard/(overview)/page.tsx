@@ -9,6 +9,11 @@ import {
   RevenueChartSkeleton,
 } from '@/app/ui/skeletons';
 import { Suspense } from 'react';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Home',
+};
 
 const DashboardPage = async () => {
   // const revenue = await fetchRevenue();
