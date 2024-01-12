@@ -10,7 +10,7 @@ import {
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { updateInvoice } from '@/app/lib/actions';
-import { useFormState } from 'react-dom';
+import { useFormState, useFormStatus } from 'react-dom';
 
 export default function EditInvoiceForm({
   invoice,
@@ -156,8 +156,18 @@ export default function EditInvoiceForm({
         >
           Cancel
         </Link>
-        <Button type="submit">Save Edit</Button>
+        <SaveEditButton />
       </div>
     </form>
+  );
+}
+
+function SaveEditButton() {
+  const { pending } = useFormStatus();
+
+  return (
+    <Button type="submit" aria-disabled={pending}>
+      {pending ? 'Saving...' : 'Save Edit'}
+    </Button>
   );
 }
